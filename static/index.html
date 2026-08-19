@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Concrete Strength Intelligence — an ML-powered compressive strength estimator by Mohamed Salem." />
+  <title>Concrete Strength Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-mark"><span class="mark-dot"></span><span>MS</span></div>
+      <div class="brand-copy"><strong>Strength<br>Intelligence</strong><small>AI ENGINEERING / 01</small></div>
+      <nav aria-label="Primary navigation">
+        <a class="nav-link active" href="#predict"><span>◌</span> Predict strength</a>
+        <a class="nav-link" href="#overview"><span>◫</span> Model overview</a>
+        <a class="nav-link" href="#history"><span>↗</span> Prediction history</a>
+      </nav>
+      <div class="sidebar-footer"><span class="status-dot"></span><div><strong>Model online</strong><small>XGBoost · v1.0</small></div></div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><div><p class="eyebrow">Mohamed Salem / AI Engineering</p><h1>Concrete strength, <em>estimated.</em></h1></div><div class="topbar-meta"><span class="live-pill"><i></i> LIVE MODEL</span><button class="icon-button" id="refreshBtn" aria-label="Refresh dashboard">↻</button></div></header>
+      <section class="hero-grid" id="overview">
+        <div class="hero-panel"><p class="eyebrow">COMPRESSIVE STRENGTH INTELLIGENCE</p><h2>Turn a concrete mix<br>into a <em>clear signal.</em></h2><p class="hero-text">Estimate compressive strength before the 28-day curing window using eight mix and age variables.</p><div class="hero-rule"></div><div class="hero-note"><span class="note-index">01</span><span>Regression model trained on <strong>1,030</strong> verified mix records.</span></div></div>
+        <div class="metric-panel"><div><span class="metric-label">DATASET RECORDS</span><strong id="datasetRows">—</strong></div><div><span class="metric-label">OUTPUT UNIT</span><strong>MPa</strong></div><div><span class="metric-label">MODEL TYPE</span><strong>XGBoost</strong></div></div>
+      </section>
+      <section class="workspace" id="predict">
+        <div class="section-heading"><div><p class="eyebrow">01 / MIX INPUTS</p><h2>Describe your mix</h2></div><p class="section-help">All fields are required. Use values in kg/m³.<br>Age is measured in days.</p></div>
+        <form id="predictionForm" class="mix-form">
+          <div class="input-grid" id="inputGrid"></div>
+          <div class="form-actions"><button class="secondary-button" type="button" id="sampleBtn">Use sample mix</button><button class="primary-button" type="submit"><span>Run prediction</span><span class="arrow">↗</span></button></div>
+        </form>
+        <div id="errorBox" class="error-box" role="alert" hidden></div>
+      </section>
+      <section class="result-section" id="resultSection" hidden>
+        <div class="section-heading"><div><p class="eyebrow">02 / MODEL OUTPUT</p><h2>Estimated performance</h2></div><span class="result-time" id="resultTime"></span></div>
+        <div class="result-card"><div class="score-wrap"><span class="metric-label">ESTIMATED COMPRESSIVE STRENGTH</span><div class="score"><strong id="strengthValue">—</strong><span>MPa</span></div><span class="band-badge" id="bandBadge">—</span></div><div class="result-divider"></div><div class="interpretation"><span class="metric-label">INTERPRETATION</span><p id="interpretationText">—</p><small>Use this estimate as decision support, not a replacement for laboratory validation.</small></div></div>
+      </section>
+      <section class="history-section" id="history"><div class="section-heading"><div><p class="eyebrow">03 / RECENT RUNS</p><h2>Prediction history</h2></div></div><div class="history-table-wrap"><table><thead><tr><th>Run</th><th>Strength</th><th>Band</th><th>Age</th><th>Time</th></tr></thead><tbody id="historyBody"><tr><td colspan="5" class="empty-state">No predictions yet. Your recent runs will appear here.</td></tr></tbody></table></div></section>
+      <footer><span>Built by <strong>Mohamed Salem</strong> · AI / ML / MLOps</span><span>Decision support for concrete mix design</span></footer>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
